@@ -50,30 +50,29 @@ export default function Services() {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 100 }}
-              className="group relative p-8 rounded-3xl bg-card-bg border border-card-border overflow-hidden hover:border-primary/50 transition-colors duration-300 h-full flex flex-col"
-              data-cursor="LEARN"
-            >
-              {/* Background gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="relative z-10 mb-6 w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
-                {service.icon}
-              </div>
-              
-              <h3 className="relative z-10 text-xl font-bold mb-3">{service.title}</h3>
-              <p className="relative z-10 text-foreground/60 leading-relaxed flex-grow">
-                {service.description}
-              </p>
-            </motion.div>
-          ))}
+        <div className="relative mt-12 py-16 px-4 md:px-12 bg-[#ecfcf4] rounded-[3rem] shadow-sm border border-emerald-50">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 100 }}
+                className="group relative p-8 md:p-10 rounded-3xl bg-white border border-slate-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] hover:border-primary/30 transition-all duration-500 h-full flex flex-col hover:-translate-y-2 hover:z-10"
+                data-cursor="LEARN"
+              >
+                <div className="relative z-10 mb-6 flex items-center text-primary group-hover:scale-110 group-hover:text-primary-hover transition-transform duration-300">
+                  {service.icon}
+                </div>
+                
+                <h3 className="relative z-10 text-xl font-bold mb-3 text-slate-900 group-hover:text-primary transition-colors">{service.title}</h3>
+                <p className="relative z-10 text-slate-500 leading-relaxed flex-grow text-sm font-medium">
+                  {service.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

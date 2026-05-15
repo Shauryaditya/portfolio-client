@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050505;
-  --foreground: #f0f0f0;
+  --background: #fff5f8;
+  --foreground: #1e1b4b;
   
-  --primary: #8b5cf6;
-  --primary-hover: #a78bfa;
+  --primary: #d946ef;
+  --primary-hover: #c026d3;
   
-  --secondary: #3b82f6;
-  --secondary-hover: #60a5fa;
+  --secondary: #ec4899;
+  --secondary-hover: #db2777;
   
-  --accent: #d946ef;
+  --accent: #8b5cf6;
   
-  --card-bg: #111111;
-  --card-border: #222222;
+  --card-bg: #ffffff;
+  --card-border: #fce7f3;
 }
 
 @theme {
@@ -40,10 +40,10 @@ html {
 }
 
 .glass {
-  background: rgba(17, 17, 17, 0.7);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .text-gradient {
