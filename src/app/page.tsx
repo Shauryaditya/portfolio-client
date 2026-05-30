@@ -17,9 +17,9 @@ export default function Home() {
       <Navbar />
       <Hero />
       {/* <CircleRevealSection><Philosophy /></CircleRevealSection> */}
-      <CircleRevealSection>
+      {/* <CircleRevealSection>
         <About />
-      </CircleRevealSection>
+      </CircleRevealSection> */}
       <WorkExperience />
       <CircleRevealSection>
         <Services />

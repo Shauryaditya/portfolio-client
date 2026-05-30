@@ -1,287 +1,316 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight, Megaphone, Sparkles, Stethoscope, Target } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
-import { Sparkles, Megaphone, Stethoscope, LineChart } from "lucide-react";
+import { ReactNode, useRef } from "react";
 
-const experiences = [
+type Project = {
+  id: number;
+  title: string;
+  kicker: string;
+  summary: string;
+  image: string;
+  imageAlt: string;
+  stats: Array<{ label: string; value: string }>;
+  tags: string[];
+  icon: ReactNode;
+  theme: "red" | "cream";
+  animation: "float" | "fan" | "stack" | "tilt";
+};
+
+const projects: Project[] = [
   {
     id: 1,
-    title: "My Journey & Strategy",
-    icon: <LineChart className="w-6 h-6 text-primary" />,
-    content: (
-      <div className="space-y-6 text-lg md:text-xl text-foreground/80 font-medium">
-        <p>
-          As{" "}
-          <strong className="text-foreground">
-            Social Media Manager at Minds Journal
-          </strong>
-          , I lead 360-degree campaigns across platforms, create engaging
-          content, and build influencer networks to drive brand growth and
-          engagement.
-        </p>
-        <p>
-          My role involves analytics reporting, SEO optimization, and strategic
-          content planning to boost user interaction on Facebook, Instagram,
-          YouTube, Pinterest, and more.
-        </p>
-        <p>
-          Previously, as a{" "}
-          <strong className="text-foreground">Social Media Executive</strong>, I
-          focused on brand consistency and audience growth, laying the
-          groundwork for my advanced skills in social media strategy and content
-          innovation.
-        </p>
-      </div>
-    ),
-    visual: (
-      <div className="relative w-full h-full flex items-center justify-center p-4">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-[2rem] backdrop-blur-3xl" />
-        <div className="relative w-[50%] md:w-[40%] lg:w-[45%] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] border-[6px] border-white z-30 bg-white group hover:scale-105 transition-transform duration-500">
-          <Image
-            src="/minds-journal-ig.jpg"
-            alt="Minds Journal Instagram"
-            fill
-            className="object-cover"
-          />
-        </div>
-      </div>
-    ),
-    color: "bg-[#fff5f8]",
+    title: "ISDIN India",
+    kicker: "Skincare Launch",
+    summary: "A clean product-led content system for premium skincare visibility.",
+    image: "/isdinportfolio.webp",
+    imageAlt: "ISDIN India portfolio creative",
+    stats: [
+      { label: "Format", value: "Reels" },
+      { label: "Focus", value: "Launch" },
+      { label: "Style", value: "Clean" },
+    ],
+    tags: ["Skincare", "Product Stories", "Campaign Design"],
+    icon: <Sparkles className="h-5 w-5" />,
+    theme: "red",
+    animation: "float",
   },
   {
     id: 2,
-    title: "The Minds Journal Network",
-    icon: <Megaphone className="w-6 h-6 text-blue-500" />,
-    content: (
-      <div className="space-y-6 text-lg md:text-xl text-foreground/80 font-medium">
-        <p>
-          Managed large-scale digital communities and publishing platforms,
-          driving millions of impressions and high engagement rates.
-        </p>
-        <div className="flex flex-wrap gap-3 mt-6">
-          {[
-            "TheMindsJournal",
-            "Zodiac Signs 'N Secrets",
-            "Hey Introvert",
-            "The Quest Within",
-            "2am",
-            "I Believe",
-          ].map((brand) => (
-            <span
-              key={brand}
-              className="px-4 py-2 bg-white/60 border border-blue-200 rounded-full text-blue-900 text-sm font-bold shadow-sm"
-            >
-              {brand}
-            </span>
-          ))}
-        </div>
-      </div>
-    ),
-    visual: (
-      <div className="relative w-full h-full flex flex-col items-center justify-center p-4 md:p-8">
-        <div className="relative w-full aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/40 mb-6 group">
-          <Image
-            src="/facebook-brands.png"
-            alt="Facebook Brands"
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        </div>
-        <div className="relative w-3/4 aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/40 group ml-auto -mt-16 z-10">
-          <Image
-            src="/work-3.png"
-            alt="Pinterest and YouTube"
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-        </div>
-      </div>
-    ),
-    color: "bg-[#f0f9ff]",
+    title: "The Minds Journal",
+    kicker: "Community Network",
+    summary: "Multi-platform content built for quotes, psychology, and daily engagement.",
+    image: "/mindjournal_insta.webp",
+    imageAlt: "The Minds Journal Instagram showcase",
+    stats: [
+      { label: "Channels", value: "6+" },
+      { label: "Output", value: "Daily" },
+      { label: "Reach", value: "High" },
+    ],
+    tags: ["Facebook", "Instagram", "Community"],
+    icon: <Megaphone className="h-5 w-5" />,
+    theme: "cream",
+    animation: "stack",
   },
   {
     id: 3,
-    title: "Palsonsderma Skincare",
-    icon: <Stethoscope className="w-6 h-6 text-teal-500" />,
-    content: (
-      <div className="space-y-6 text-lg md:text-xl text-foreground/80 font-medium">
-        <p>
-          Led social media strategies for premium dermatology and skincare
-          brands under the{" "}
-          <strong className="text-foreground">Palsonsderma</strong> umbrella.
-        </p>
-        <p>
-          Managed content creation, product highlights, and brand identity
-          across Instagram to build trust and aesthetic appeal for skin and hair
-          clinics.
-        </p>
-        <div className="flex flex-wrap gap-3 mt-6">
-          {["Neolayr Pro", "NMFe", "Q-Sera", "Wizderm Clinic"].map((brand) => (
-            <span
-              key={brand}
-              className="px-4 py-2 bg-white/60 border border-teal-200 rounded-full text-teal-900 text-sm font-bold shadow-sm"
-            >
-              {brand}
-            </span>
-          ))}
-        </div>
-      </div>
-    ),
-    visual: (
-      <motion.div
-        initial="initial"
-        whileInView="animate"
-        whileHover="hover"
-        viewport={{ once: true }}
-        className="relative w-full h-full flex items-center justify-center p-4 perspective-[1200px] cursor-pointer"
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {/* NMFe Phone (Left) */}
-        <motion.div
-          variants={{
-            initial: { rotateY: -20, x: 60, z: -100 },
-            animate: { rotateY: -15, x: 30, z: -50 },
-            hover: { rotateY: -5, x: "-85%", z: 20, rotateZ: -6, scale: 1.05 },
-          }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="absolute w-[45%] md:w-[40%] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-10"
-        >
-          <Image
-            src="/nmfe-ig.jpg"
-            alt="NMFe Instagram"
-            fill
-            className="object-cover"
-          />
-        </motion.div>
-
-        {/* Qsera Phone (Right) */}
-        <motion.div
-          variants={{
-            initial: { rotateY: 20, x: -60, z: -100 },
-            animate: { rotateY: 15, x: -30, z: -50 },
-            hover: { rotateY: 5, x: "85%", z: 20, rotateZ: 6, scale: 1.05 },
-          }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="absolute w-[45%] md:w-[40%] aspect-[9/16] rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-20"
-        >
-          <Image
-            src="/qsera-ig.jpg"
-            alt="Qsera Instagram"
-            fill
-            className="object-cover"
-          />
-        </motion.div>
-
-        {/* Neolayr Pro Phone (Center) */}
-        <motion.div
-          variants={{
-            initial: { y: 50, z: 0 },
-            animate: { y: 0, z: 50 },
-            hover: { y: "-5%", z: 80, scale: 1.1 },
-          }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          className="relative w-[50%] md:w-[45%] aspect-[9/16] rounded-[2rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] border-[6px] border-white z-30 bg-white"
-        >
-          <Image
-            src="/insta-handle.jpg"
-            alt="Neolayr Pro Instagram"
-            fill
-            className="object-cover"
-          />
-        </motion.div>
-      </motion.div>
-    ),
-    color: "bg-[#f0fdf4]",
+    title: "Palsonsderma",
+    kicker: "Derma Brands",
+    summary: "Aesthetic social presence for skincare, haircare, and clinic brands.",
+    image: "/insta-handle.jpg",
+    imageAlt: "Palsonsderma Instagram handle",
+    stats: [
+      { label: "Brands", value: "4" },
+      { label: "Tone", value: "Trust" },
+      { label: "Care", value: "Skin" },
+    ],
+    tags: ["NMFe", "Q-Sera", "Neolayr Pro"],
+    icon: <Stethoscope className="h-5 w-5" />,
+    theme: "red",
+    animation: "fan",
+  },
+  {
+    id: 4,
+    title: "Performance Creatives",
+    kicker: "Social Ads",
+    summary: "Scroll-stopping visuals shaped for campaigns, clicks, and recall.",
+    image: "/work-1.png",
+    imageAlt: "Performance creative sample",
+    stats: [
+      { label: "Assets", value: "200+" },
+      { label: "Motion", value: "Yes" },
+      { label: "Goal", value: "Clicks" },
+    ],
+    tags: ["Creative Direction", "Ads", "Analytics"],
+    icon: <Target className="h-5 w-5" />,
+    theme: "cream",
+    animation: "tilt",
   },
 ];
 
 export default function WorkExperience() {
   const containerRef = useRef<HTMLDivElement>(null);
-
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
+  const headlineX = useTransform(scrollYProgress, [0, 1], ["0%", "-28%"]);
+
   return (
     <section
       ref={containerRef}
       id="work"
-      className="relative bg-white pb-[30vh]"
+      className="relative overflow-hidden bg-[#fff5ea] py-24 text-[#d70422] md:py-32"
     >
-      {/* Background that stays sticky */}
-      <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden">
-        <div className="sticky top-0 h-screen w-full">
-          <div className="absolute top-[-10%] left-[-10%] w-[50rem] h-[50rem] bg-pink-100 blur-[120px] rounded-full" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40rem] h-[40rem] bg-purple-100 blur-[120px] rounded-full" />
-        </div>
+      <div className="pointer-events-none sticky top-0 z-0 h-screen overflow-hidden">
+        <motion.div
+          style={{ x: headlineX }}
+          className="absolute top-20 whitespace-nowrap font-[family-name:var(--font-display)] text-[28vw] leading-none text-[#d70422]/10"
+        >
+          projects projects projects
+        </motion.div>
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#fff5ea] to-transparent" />
       </div>
 
-      {experiences.map((exp, index) => {
-        return (
-          <Card
-            key={exp.id}
-            exp={exp}
-            index={index}
-            progress={scrollYProgress}
-            total={experiences.length}
-          />
-        );
-      })}
+      <div className="container relative z-10 mx-auto -mt-[100vh] px-5 md:px-10">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-120px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="mb-16 max-w-4xl md:mb-24"
+        >
+          <p className="mb-3 text-sm font-black uppercase tracking-[0.28em]">
+            Selected work
+          </p>
+          <h2 className="font-[family-name:var(--font-display)] text-[clamp(5rem,14vw,12rem)] font-normal leading-[0.78] tracking-normal">
+            projects
+          </h2>
+        </motion.div>
+
+        <div className="space-y-12 md:space-y-20">
+          {projects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              project={project}
+              index={index}
+              progress={scrollYProgress}
+            />
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
 
-function Card({
-  exp,
+function ProjectCard({
+  project,
   index,
   progress,
-  total,
 }: {
-  exp: any;
+  project: Project;
   index: number;
-  progress: any;
-  total: number;
+  progress: MotionValue<number>;
 }) {
-  // Each card becomes sticky when its top reaches the viewport
-  // We offset the top by index * 40px to create a stacked deck effect
-
-  const targetScale = 1 - (total - index) * 0.05;
-
-  const range = [index / total, 1];
-  const scale = useTransform(progress, range, [1, targetScale]);
-  const opacity = useTransform(progress, range, [1, 0.5]);
+  const start = index / projects.length;
+  const end = (index + 1) / projects.length;
+  const y = useTransform(progress, [start, end], [80, -40]);
+  const rotate = useTransform(progress, [start, end], [index % 2 ? -2 : 2, 0]);
+  const isRed = project.theme === "red";
 
   return (
-    <div
-      className="sticky flex items-center justify-center w-full h-screen"
-      style={{ top: `0px` }}
+    <motion.article
+      style={{ y, rotate }}
+      initial={{ opacity: 0, scale: 0.96 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
+      className={`group relative min-h-[72vh] overflow-hidden rounded-[1.75rem] border shadow-[0_30px_80px_-35px_rgba(92,0,12,0.45)] md:rounded-[2.5rem] ${
+        isRed
+          ? "border-red-200/30 bg-[#d70422] text-white"
+          : "border-red-200 bg-[#fffaf3] text-[#d70422]"
+      }`}
     >
-      <motion.div
-        style={{ scale, opacity, top: `calc(5vh + ${index * 25}px)` }}
-        className={`relative flex flex-col lg:flex-row w-[90vw] max-w-6xl h-[85vh] lg:h-[75vh] ${exp.color} rounded-[2.5rem] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.1)] border border-white/50 overflow-hidden transform-origin-top p-6 md:p-12 gap-8 lg:gap-16`}
-      >
-        {/* Left Content */}
-        <div className="flex-1 flex flex-col justify-center relative z-10">
-          <div className="inline-flex items-center gap-3 mb-6 bg-white/50 px-4 py-2 rounded-full border border-white shadow-sm w-fit">
-            {exp.icon}
-            <span className="text-sm font-bold text-foreground uppercase tracking-wider">
-              Experience 0{exp.id}
-            </span>
+      <div className="absolute inset-0 opacity-[0.06] [background-image:radial-gradient(currentColor_1px,transparent_1px)] [background-size:18px_18px]" />
+      <div className="relative grid min-h-[72vh] gap-8 p-6 md:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:p-12">
+        <div className="flex flex-col gap-6">
+          <div>
+            <div
+              className={`mb-8 inline-flex items-center gap-3 rounded-full border px-4 py-2 text-xs font-black uppercase tracking-[0.22em] ${
+                isRed ? "border-white/35 bg-white/10" : "border-red-200 bg-white"
+              }`}
+            >
+              {project.icon}
+              {project.kicker}
+            </div>
+
+            <h3 className="mb-6 font-[family-name:var(--font-display)] text-[clamp(4rem,9vw,8rem)] font-normal leading-[0.78] tracking-normal">
+              {project.title}
+            </h3>
+            <p className={`max-w-md text-lg font-semibold ${isRed ? "text-white/82" : "text-red-950/70"}`}>
+              {project.summary}
+            </p>
           </div>
 
-          <h3 className="text-4xl md:text-5xl font-black mb-8 text-foreground tracking-tight drop-shadow-sm">
-            {exp.title}
-          </h3>
-
-          {exp.content}
+          <div className="grid grid-cols-3 gap-3">
+            {project.stats.map((stat) => (
+              <motion.div
+                key={stat.label}
+                whileHover={{ y: -6, rotate: -1 }}
+                className={`rounded-2xl border p-4 ${
+                  isRed
+                    ? "border-white/20 bg-white/10"
+                    : "border-red-100 bg-[#d70422] text-white"
+                }`}
+              >
+                <p className="text-2xl font-black md:text-3xl">{stat.value}</p>
+                <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.18em] opacity-70">
+                  {stat.label}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
-        {/* Right Visuals */}
-        <div className="flex-1 relative h-full min-h-[300px]">{exp.visual}</div>
+        <ProjectVisual project={project} isRed={isRed} />
+
+        <div className="absolute bottom-4 left-6 right-6 flex flex-wrap items-center gap-2 md:bottom-4 md:left-10 md:right-10">
+          {project.tags.map((tag) => (
+            <span
+              key={tag}
+              className={`rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.16em] ${
+                isRed ? "bg-white text-[#d70422]" : "bg-[#d70422] text-white"
+              }`}
+            >
+              {tag}
+            </span>
+          ))}
+          <ArrowUpRight className="ml-auto hidden h-8 w-8 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 md:block" />
+        </div>
+      </div>
+    </motion.article>
+  );
+}
+
+function ProjectVisual({ project, isRed }: { project: Project; isRed: boolean }) {
+  if (project.animation === "fan") {
+    return (
+      <motion.div
+        initial="rest"
+        whileHover="hover"
+        className="relative flex min-h-[26rem] items-center justify-center pb-16 lg:pb-0"
+      >
+        {["/nmfe-ig.jpg", project.image, "/qsera-ig.jpg"].map((src, index) => (
+          <motion.div
+            key={src}
+            variants={{
+              rest: {
+                x: `${(index - 1) * 18}%`,
+                rotate: (index - 1) * 8,
+                y: index === 1 ? 0 : 28,
+              },
+              hover: {
+                x: `${(index - 1) * 42}%`,
+                rotate: (index - 1) * 14,
+                y: index === 1 ? -20 : 16,
+              },
+            }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+            className="absolute aspect-[9/16] w-[42%] max-w-[15rem] overflow-hidden rounded-[1.6rem] border-[6px] border-white bg-white shadow-2xl"
+            style={{ zIndex: index === 1 ? 3 : 2 }}
+          >
+            <Image src={src} alt="" fill sizes="240px" className="object-cover" />
+          </motion.div>
+        ))}
       </motion.div>
-    </div>
+    );
+  }
+
+  if (project.animation === "stack") {
+    return (
+      <motion.div
+        whileHover="hover"
+        className="relative flex min-h-[26rem] items-center justify-center pb-16 lg:pb-0"
+      >
+        <motion.div
+          variants={{ hover: { rotate: -6, x: -34, y: -22 } }}
+          className="absolute aspect-video w-[78%] overflow-hidden rounded-[1.5rem] border-[6px] border-white bg-white shadow-2xl"
+        >
+          <Image src={project.image} alt={project.imageAlt} fill sizes="700px" className="object-cover" />
+        </motion.div>
+        <motion.div
+          variants={{ hover: { rotate: 7, x: 42, y: 32 } }}
+          className="absolute aspect-video w-[58%] translate-y-20 overflow-hidden rounded-[1.5rem] border-[6px] border-white bg-white shadow-2xl"
+        >
+          <Image src="/work-3.png" alt="" fill sizes="520px" className="object-cover" />
+        </motion.div>
+      </motion.div>
+    );
+  }
+
+  return (
+    <motion.div
+      whileHover={project.animation === "tilt" ? { rotateX: 6, rotateY: -8, scale: 1.03 } : { y: -18, rotate: -2 }}
+      transition={{ duration: 0.45, ease: "easeOut" }}
+      className="relative flex min-h-[26rem] items-center justify-center pb-16 [transform-style:preserve-3d] lg:pb-0"
+    >
+      <div
+        className={`absolute h-[72%] w-[72%] rounded-full blur-3xl ${
+          isRed ? "bg-white/20" : "bg-[#d70422]/15"
+        }`}
+      />
+      <div className="relative aspect-[4/5] w-[76%] max-w-[31rem] overflow-hidden rounded-[1.75rem] border-[8px] border-white bg-white shadow-2xl">
+        <Image
+          src={project.image}
+          alt={project.imageAlt}
+          fill
+          sizes="(min-width: 1024px) 520px, 80vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+      </div>
+    </motion.div>
   );
 }

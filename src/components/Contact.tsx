@@ -52,7 +52,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <form className="p-8 md:p-10 rounded-3xl bg-card-bg border border-card-border flex flex-col gap-6">
+            <form className="p-8 md:p-10 rounded-3xl bg-card-bg border border-card-border ">
               <div className="flex flex-col gap-2">
                 <label htmlFor="name" className="text-sm font-medium text-foreground/80">Name</label>
                 <input 
