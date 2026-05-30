@@ -31,7 +31,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         <a href="#" className="text-xl font-bold tracking-tighter">
-          Social<span className="text-primary">Pro</span>.
+          Social<span className="text-[#d70422]">Pro</span>.
         </a>
 
         {/* Desktop Nav */}
@@ -40,14 +40,14 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              className="text-sm font-medium text-foreground/80 hover:text-[#d70422] transition-colors"
             >
               {link.name}
             </a>
           ))}
           <a
             href="#contact"
-            className="px-5 py-2 text-sm font-medium bg-primary hover:bg-primary-hover text-white rounded-full transition-all hover:scale-105 active:scale-95"
+            className="px-5 py-2 text-sm font-medium bg-[#d70422] hover:bg-[#b6001a] text-white rounded-full transition-all hover:scale-105 active:scale-95"
           >
             Hire Me
           </a>
@@ -74,7 +74,7 @@ export default function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="text-lg font-medium hover:text-primary transition-colors"
+              className="text-lg font-medium hover:text-[#d70422] transition-colors"
               onClick={() => setIsOpen(false)}
             >
               {link.name}

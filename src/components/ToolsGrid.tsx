@@ -16,7 +16,7 @@ const tools = [
 
 export default function ToolsGrid() {
   return (
-    <section className="py-24 border-t border-white/5">
+    <section className="py-24 border-t border-red-100 bg-white text-[#5c000c]">
       <div className="container mx-auto px-6 md:px-12 text-center">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -24,7 +24,7 @@ export default function ToolsGrid() {
           viewport={{ once: true }}
           className="text-2xl md:text-3xl font-bold mb-12"
         >
-          My Growth <span className="text-primary">Stack</span>
+          My Growth <span className="text-[#d70422]">Stack</span>
         </motion.h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
@@ -35,12 +35,12 @@ export default function ToolsGrid() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: index * 0.05, duration: 0.4 }}
-              className="flex items-center justify-center gap-3 p-6 rounded-2xl bg-card-bg border border-card-border hover:border-primary/50 hover:bg-white/5 transition-all cursor-default group"
+              className="flex items-center justify-center gap-3 p-6 rounded-2xl bg-white border border-red-100 shadow-[0_10px_30px_-18px_rgba(92,0,12,0.35)] hover:border-[#d70422]/45 hover:bg-[#fff5ea] transition-all cursor-default group"
             >
-              <div className="text-foreground/50 group-hover:text-primary transition-colors">
+              <div className="text-[#d70422]/55 group-hover:text-[#d70422] transition-colors">
                 {tool.icon}
               </div>
-              <span className="font-semibold text-foreground/80 group-hover:text-white transition-colors">
+              <span className="font-semibold text-[#5c000c]/80 group-hover:text-[#d70422] transition-colors">
                 {tool.name}
               </span>
             </motion.div>

@@ -37,7 +37,7 @@ export default function Services() {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl font-bold mb-4"
           >
-            Capabilities & <span className="text-primary">Services</span>
+            Capabilities & <span className="text-[#d70422]">Services</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -50,7 +50,7 @@ export default function Services() {
           </motion.p>
         </div>
 
-        <div className="relative mt-12 py-16 px-4 md:px-12 bg-[#ecfcf4] rounded-[3rem] shadow-sm border border-emerald-50">
+        <div className="relative mt-12 py-16 px-4 md:px-12 bg-white rounded-[3rem] shadow-sm border border-red-100">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
               <motion.div
@@ -59,15 +59,15 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1, type: "spring", stiffness: 100 }}
-                className="group relative p-8 md:p-10 rounded-3xl bg-white border border-slate-100 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)] hover:border-primary/30 transition-all duration-500 h-full flex flex-col hover:-translate-y-2 hover:z-10"
+                className="group relative p-8 md:p-10 rounded-3xl bg-white border border-red-100 shadow-[0_10px_40px_-10px_rgba(92,0,12,0.12)] hover:shadow-[0_20px_50px_-10px_rgba(92,0,12,0.22)] hover:border-[#d70422]/40 transition-all duration-500 h-full flex flex-col hover:-translate-y-2 hover:z-10"
                 data-cursor="LEARN"
               >
-                <div className="relative z-10 mb-6 flex items-center text-primary group-hover:scale-110 group-hover:text-primary-hover transition-transform duration-300">
+                <div className="relative z-10 mb-6 flex items-center text-[#d70422] group-hover:scale-110 group-hover:text-[#b6001a] transition-transform duration-300">
                   {service.icon}
                 </div>
                 
-                <h3 className="relative z-10 text-xl font-bold mb-3 text-slate-900 group-hover:text-primary transition-colors">{service.title}</h3>
-                <p className="relative z-10 text-slate-500 leading-relaxed flex-grow text-sm font-medium">
+                <h3 className="relative z-10 text-xl font-bold mb-3 text-[#5c000c] group-hover:text-[#d70422] transition-colors">{service.title}</h3>
+                <p className="relative z-10 text-[#5c000c]/65 leading-relaxed flex-grow text-sm font-medium">
                   {service.description}
                 </p>
               </motion.div>

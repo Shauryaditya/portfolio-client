@@ -14,7 +14,7 @@ const testimonials = [
     name: "Marcus Aurelius",
     role: "Founder, StoicBrand",
     text: "The best social media hire we've ever made. Our community engagement skyrocketed by 250% and our customer acquisition cost dropped by half. A true professional.",
-    gradient: "from-purple-500 to-pink-500"
+    gradient: "from-red-600 to-orange-500"
   },
   {
     name: "Elena Rodriguez",

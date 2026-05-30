@@ -19,8 +19,8 @@ const caseStudies = [
       { label: "New Followers", value: "+150K" },
       { label: "CAC Reduction", value: "45%" }
     ],
-    color: "from-pink-500/20 to-orange-500/20",
-    border: "group-hover:border-pink-500/50"
+    color: "from-red-600/20 to-orange-500/20",
+    border: "group-hover:border-red-500/50"
   },
   {
     id: 2,
@@ -51,7 +51,7 @@ const caseStudies = [
       { label: "Avg View Time", value: "+65%" },
       { label: "CTR Increase", value: "+12%" }
     ],
-    color: "from-red-500/20 to-rose-500/20",
+    color: "from-red-600/20 to-orange-500/20",
     border: "group-hover:border-red-500/50"
   }
 ];

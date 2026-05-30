@@ -31,7 +31,7 @@ const ACCENT_COLORS: AccentColor[] = [
   { top: "bg-yellow-400", bottom: "bg-yellow-500", text: "text-neutral-900" },
   { top: "bg-green-600", bottom: "bg-green-700", text: "text-white" },
   { top: "bg-blue-600", bottom: "bg-blue-700", text: "text-white" },
-  { top: "bg-violet-600", bottom: "bg-violet-700", text: "text-white" },
+  { top: "bg-stone-700", bottom: "bg-stone-800", text: "text-white" },
   { top: "bg-white", bottom: "bg-neutral-100", text: "text-neutral-900" },
 ];
 
@@ -270,7 +270,7 @@ const COLOR_MAP: Record<string, string> = {
   "{Y}": "#FBC02D",
   "{G}": "#43A047",
   "{B}": "#1E88E5",
-  "{V}": "#8E24AA",
+  "{V}": "#D70422",
   "{W}": "#FAFAFA",
 };
 

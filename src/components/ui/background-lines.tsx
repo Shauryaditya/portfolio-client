@@ -56,7 +56,7 @@ export const BackgroundLines = ({
               y2="0%"
             >
               <stop offset="0%" stopColor="transparent" />
-              <stop offset="50%" stopColor="#8b5cf6" />
+              <stop offset="50%" stopColor="#d70422" />
               <stop offset="100%" stopColor="transparent" />
             </linearGradient>
           </defs>

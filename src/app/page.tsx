@@ -24,9 +24,9 @@ export default function Home() {
       <CircleRevealSection>
         <Services />
       </CircleRevealSection>
-      <CircleRevealSection>
+      {/* <CircleRevealSection>
         <Testimonials />
-      </CircleRevealSection>
+      </CircleRevealSection> */}
       {/* <CircleRevealSection>
         <MacbookScrollDemo />
       </CircleRevealSection> */}

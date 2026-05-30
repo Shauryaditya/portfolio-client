@@ -71,23 +71,7 @@ const projects: Project[] = [
     theme: "red",
     animation: "fan",
   },
-  {
-    id: 4,
-    title: "Performance Creatives",
-    kicker: "Social Ads",
-    summary: "Scroll-stopping visuals shaped for campaigns, clicks, and recall.",
-    image: "/work-1.png",
-    imageAlt: "Performance creative sample",
-    stats: [
-      { label: "Assets", value: "200+" },
-      { label: "Motion", value: "Yes" },
-      { label: "Goal", value: "Clicks" },
-    ],
-    tags: ["Creative Direction", "Ads", "Analytics"],
-    icon: <Target className="h-5 w-5" />,
-    theme: "cream",
-    animation: "tilt",
-  },
+
 ];
 
 export default function WorkExperience() {
