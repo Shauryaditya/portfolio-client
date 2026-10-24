@@ -5,8 +5,7 @@ import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Case Studies", href: "#work" },
+  { name: "Selected Work", href: "#work" },
   { name: "Services", href: "#services" },
   { name: "Contact", href: "#contact" },
 ];
@@ -56,6 +55,10 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           className="md:hidden text-foreground"
+          type="button"
+          aria-label={isOpen ? "Close navigation" : "Open navigation"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -65,6 +68,7 @@ export default function Navbar() {
       {/* Mobile Nav */}
       {isOpen && (
         <motion.div
+          id="mobile-navigation"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
